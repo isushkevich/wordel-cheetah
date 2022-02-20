@@ -1,10 +1,10 @@
 import React from 'react';
-import {Wordlist} from "./components/Wordlist";
+import {WordDisplay} from "./components/WordDisplay";
 
 function App() {
   return (
     <>
-      <Wordlist/>
+      <WordDisplay/>
     </>
   );
 }
