@@ -4,3 +4,8 @@ body {
   font-family: 'Roboto', 'Segoe UI', sans-serif;
   font-weight: 300;
 }
+
+.app-container {
+  display: grid;
+  grid-template-columns: auto auto;
+}
