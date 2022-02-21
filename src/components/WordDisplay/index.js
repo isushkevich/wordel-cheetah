@@ -1,14 +1,14 @@
-import {Box} from "@mui/material";
-import {wordlist} from "../../data/wordlist";
+import React from "react";
+import './styles.css';
 
-export const WordDisplay = () => {
-  const words = wordlist.map((word) =>
-    <li key={word}>{word}</li>
+export const WordDisplay = ({words}) => {
+  const wordsToDisplay = words.map((word) =>
+    <li key={word} className={"listItem"}>{word}</li>
   );
 
-  return <>
-    <ul>
-      {words}
-    </ul>
-  </>;
+  return <div>
+    <ol>
+      {wordsToDisplay}
+    </ol>
+  </div>;
 }
