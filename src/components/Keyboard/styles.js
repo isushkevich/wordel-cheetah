@@ -1,13 +1,16 @@
 export const styles = {
   keyboardContainer: {
     position: "sticky",
-    top: "0",
+    top: "50px",
     display: "flex",
     flexDirection: "column",
     alignItems: "center"
   },
   letterOptions: {
     margin: "20px auto",
+  },
+  letterOptionButton: {
+    marginRight: '5px',
   },
   keyboard: {
     display: "flex",
