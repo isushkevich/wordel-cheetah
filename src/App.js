@@ -7,10 +7,46 @@ import {wordlist} from "./data/wordlist";
 function App() {
   const [selectedWords, setSelectedWords] = useState(wordlist);
 
+  const [alphabetStatus, setAlphabetStatus] = useState({
+    a: "undefined",
+    b: "undefined",
+    c: "undefined",
+    d: "undefined",
+    e: "undefined",
+    f: "undefined",
+    g: "undefined",
+    h: "undefined",
+    i: "undefined",
+    j: "undefined",
+    k: "undefined",
+    l: "undefined",
+    m: "undefined",
+    n: "undefined",
+    o: "undefined",
+    p: "undefined",
+    q: "undefined",
+    r: "undefined",
+    s: "undefined",
+    t: "undefined",
+    u: "undefined",
+    v: "undefined",
+    w: "undefined",
+    x: "undefined",
+    y: "undefined",
+    z: "undefined",
+  });
+
+  const handleAlphabetStatus = (letter, status) => {
+    setAlphabetStatus(prevState => ({
+      ...prevState,
+      [letter]: status
+    }));
+  }
+
   return (
     <div className={"app-container"}>
       <WordDisplay words={selectedWords}/>
-      <Keyboard/>
+      <Keyboard alphabetStatus={alphabetStatus} handleAlphabetStatus={handleAlphabetStatus}/>
     </div>
   );
 }
