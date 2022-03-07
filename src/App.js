@@ -5,9 +5,14 @@ import './App.css';
 import {wordlist} from "./data/wordlist";
 
 function App() {
-  const [selectedWords, setSelectedWords] = useState(wordlist);
+  const handleAlphabetStatus = (letter, status) => {
+    setAlphabetStatus(prevState => ({
+      ...prevState,
+      [letter]: status
+    }));
+  }
 
-  const [alphabetStatus, setAlphabetStatus] = useState({
+   const [alphabetStatus, setAlphabetStatus] = useState({
     a: "undefined",
     b: "undefined",
     c: "undefined",
@@ -36,16 +41,11 @@ function App() {
     z: "undefined",
   });
 
-  const handleAlphabetStatus = (letter, status) => {
-    setAlphabetStatus(prevState => ({
-      ...prevState,
-      [letter]: status
-    }));
-  }
+
 
   return (
     <div className={"app-container"}>
-      <WordDisplay words={selectedWords}/>
+      <WordDisplay alphabetStatus={alphabetStatus}/>
       <Keyboard alphabetStatus={alphabetStatus} handleAlphabetStatus={handleAlphabetStatus}/>
     </div>
   );
