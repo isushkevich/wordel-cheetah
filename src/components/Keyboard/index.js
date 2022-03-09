@@ -17,7 +17,7 @@ export const Keyboard = ({alphabetStatus, handleAlphabetStatus}) => {
     if (alphabetStatus[letter] === "undefined") {
       return <Button onClick={() => handleLetterSelect(letter)} key={letter} variant='contained' size='medium'
                      sx={styles.keyboardButton}>{letter}</Button>
-    } else if (alphabetStatus[letter] === "notincluded") {
+    } else if (alphabetStatus[letter] === "excluded") {
       return <Button onClick={() => handleLetterSelect(letter)} key={letter} variant='outlined' size='medium'
                      sx={styles.keyboardButton}>{letter}</Button>
     } else if (alphabetStatus[letter] === 'present') {
@@ -56,12 +56,12 @@ export const Keyboard = ({alphabetStatus, handleAlphabetStatus}) => {
       {selectedLetter ? (<Box sx={styles.letterOptions}>
         <Button onClick={() => handleAlphabetStatus(selectedLetter, "undefined")} sx={styles.letterOptionButton}
                 variant='contained' size='large'>{selectedLetter}</Button>
-        <Button onClick={() => handleAlphabetStatus(selectedLetter, "notincluded")} sx={styles.letterOptionButton}
+        <Button onClick={() => handleAlphabetStatus(selectedLetter, "excluded")} sx={styles.letterOptionButton}
                 variant='outlined' size='large'>{selectedLetter}</Button>
         <Button onClick={() => handleAlphabetStatus(selectedLetter, "present")} sx={styles.letterOptionButton}
                 variant='contained' color={'warning'} size='large'>{selectedLetter}</Button>
-        <Button onClick={() => handleAlphabetStatus(selectedLetter, "correct")} sx={styles.letterOptionButton}
-                variant='contained' color={'success'} size='large'>{selectedLetter}</Button>
+        {/*<Button onClick={() => handleAlphabetStatus(selectedLetter, "correct")} sx={styles.letterOptionButton}*/}
+        {/*        variant='contained' color={'success'} size='large'>{selectedLetter}</Button>*/}
       </Box>) : (<></>)}
     </Box>
   </Box>

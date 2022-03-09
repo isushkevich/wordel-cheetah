@@ -5,14 +5,7 @@ import './App.css';
 import {wordlist} from "./data/wordlist";
 
 function App() {
-  const handleAlphabetStatus = (letter, status) => {
-    setAlphabetStatus(prevState => ({
-      ...prevState,
-      [letter]: status
-    }));
-  }
-
-   const [alphabetStatus, setAlphabetStatus] = useState({
+  const [alphabetStatus, setAlphabetStatus] = useState({
     a: "undefined",
     b: "undefined",
     c: "undefined",
@@ -41,6 +34,12 @@ function App() {
     z: "undefined",
   });
 
+  const handleAlphabetStatus = (letter, status) => {
+    setAlphabetStatus(prevState => ({
+      ...prevState,
+      [letter]: status
+    }));
+  }
 
 
   return (
