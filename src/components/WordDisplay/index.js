@@ -12,11 +12,15 @@ export const WordDisplay = ({alphabetStatus}) => {
 
     const excludedLetters = [];
 
+    const correctLetters = [];
+
     for (let letter in alphabetStatus) {
       if (alphabetStatus[letter] === 'present') {
         presentLetters.push(letter);
       } else if (alphabetStatus[letter] === 'excluded') {
         excludedLetters.push(letter);
+      } else if (typeof(alphabetStatus[letter])==='number') {
+        correctLetters.push([letter,  alphabetStatus[letter]]);
       }
     }
 
@@ -25,10 +29,11 @@ export const WordDisplay = ({alphabetStatus}) => {
     const filteredResult = selectedWords.filter((word) => {
       const containsSymbols = presentLetters.every(letter => word.search(letter) > -1);
       const excludesSymbols = excludedLetters.every(letter => word.search(letter) === -1);
-      return containsSymbols && excludesSymbols;
+      const containsCorrectSymbols = correctLetters.every(entry => word[entry[1]-1] === entry[0]);
+      return containsSymbols && excludesSymbols && containsCorrectSymbols;
     })
 
-    console.log(presentLetters, excludedLetters);
+    // console.log(correctLetters);
 
     return filteredResult;
   }

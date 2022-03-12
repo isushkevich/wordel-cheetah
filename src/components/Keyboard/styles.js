@@ -20,4 +20,8 @@ export const styles = {
   keyboardButton: {
     margin: "3px",
   },
+  correctLetterSelect: {
+    width: "64px",
+    backgroundColor: "green"
+  },
 }

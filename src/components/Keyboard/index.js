@@ -63,12 +63,12 @@ export const Keyboard = ({alphabetStatus, handleAlphabetStatus}) => {
                 variant='contained' color={'warning'} size='large'>{selectedLetter}</Button>
         {/*<Button onClick={() => handleAlphabetStatus(selectedLetter, "correct")} sx={styles.letterOptionButton}*/}
         {/*        variant='contained' color={'success'} size='large'>{selectedLetter}</Button>*/}
-        <FormControl variant="filled">
-          <InputLabel id="demo-simple-select-label">{selectedLetter}</InputLabel>
+        <FormControl variant="standard" sx={styles.correctLetterSelect}>
+          <InputLabel id="demo-simple-select-label">{selectedLetter.toUpperCase()}</InputLabel>
           <Select
-            value={1}
+            value={alphabetStatus[selectedLetter]}
             label="Age"
-            onChange
+            onChange={(event)=>handleAlphabetStatus(selectedLetter, event.target.value)}
           >
             <MenuItem value={1}>1</MenuItem>
             <MenuItem value={2}>2</MenuItem>
