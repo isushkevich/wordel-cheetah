@@ -3,11 +3,12 @@ import './styles.css';
 import {wordlist} from "../../data/wordlist";
 
 export const WordDisplay = ({alphabetStatus}) => {
-  const [selectedWords, setSelectedWords] = useState(wordlist);
 
   const handleSelectedWords = () => {
 
-    const presentLetters = ['z'];
+    const selectedWords = [...wordlist];
+
+    const presentLetters = [];
 
     const excludedLetters = [];
 
@@ -22,26 +23,24 @@ export const WordDisplay = ({alphabetStatus}) => {
     console.log(presentLetters, excludedLetters)
 
     const filteredResult = selectedWords.filter((word) => {
-      return word.search(presentLetters[0]) > -1
+      const containsSymbols = presentLetters.every(letter => word.search(letter) > -1);
+      const excludesSymbols = excludedLetters.every(letter => word.search(letter) === -1);
+      return containsSymbols && excludesSymbols;
     })
 
+    console.log(presentLetters, excludedLetters);
 
-    setSelectedWords(filteredResult);
-    // console.log(filteredResult)
+    return filteredResult;
   }
 
-  useEffect(()=>{
-    // handleSelectedWords();
-  });
 
-
-  const wordsToDisplay = selectedWords.map((word) =>
+  const wordsToDisplay = handleSelectedWords().map((word) =>
     <li key={word} className={"list-item"}>{word}</li>
   );
 
-  return <div>
+  return (<div>
     <ol>
       {wordsToDisplay}
     </ol>
-  </div>;
+  </div>)
 }
